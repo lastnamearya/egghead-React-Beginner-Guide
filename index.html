@@ -3,35 +3,32 @@
     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
     <script type="text/babel">
+
       const rootElement = document.getElementById('root')
-      // const element = document.createElement('div')
-      // element.textContent = 'Hello World'
-      // element.className = 'container'
-      // rootElement.appendChild(element)
 
-    //  'Hello World' with React API
-    //   const element = React.createElement(
-    //     'div', 
-    //     {className: 'container',
-    //      children: 'Hello World',
-    //     })
-    //     console.log(element)
+    //   Fixed Static Component
 
-    // JSX
-        const content = 'Hello World'
-        const myClassName = 'container'
-        const props = {
-            className: 'container',
-            children: 'Hello World',
-        }
-        
-        // const element = <div {...props} />
+    //   const helloWorld = <div>Hello World</div>
 
-        // Override existing className
-        // const element = <div {...props} className="my-class" />
+    //   const element = (
+    //     <div className="container">
+    //         {helloWorld}
+    //         {helloWorld}
+    //     </div>
+    //   )
 
-        // Overriding regular children
-        const element = <div {...props} className="my-class" >Hi there</div>
+    //   Custom Component
+
+    const Message = props => <div>{props.children}</div>
+
+    const element = (
+        <div className="container">
+            <Message>
+                Hello World
+                <Message>Goodbye World</Message>
+            </Message>
+        </div>
+    )
 
     ReactDOM.render(element, rootElement)
     </script>
