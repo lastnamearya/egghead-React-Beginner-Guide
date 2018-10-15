@@ -22,25 +22,32 @@
 
     const rootElement = document.getElementById('root');
 
-    const Message = (props) => <div>{props.children}</div>;
+    function SayHello(props) {
+      return (
+        <div>
+          Hello {props.firstName} {props.lastName}!
+        </div>
+      )
+    }
 
-    const element = (
-      <div className="container">
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`Hey, you should pass a string for ${propName} in ${componentName} but you passed a type of ${typeof props[propName]}`)
+        }
+      }
+    }
 
-       <Message children="Hello World" />
+    SayHello.propTypes = {
+      firstName: PropTypes.string,
+      lastName: PropTypes.string
 
-       {Message({children: 'JavaScript Way!!'})}
+    }
 
-       {React.createElement(Message, {children: 'Passing function with arguments to create an element'})}
-
-       <Message children={'This will now going to be overriden by the next child argument'}>That's why assigning children as an prop to the object helps</Message>
-    
-      </div>
-    )
-
-    console.log(element);
-
-    ReactDOM.render(element, rootElement);
+    ReactDOM.render(
+      <SayHello firstName={true} />,
+      rootElement
+    );
 
   </script>
 
