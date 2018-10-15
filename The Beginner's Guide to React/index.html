@@ -24,27 +24,19 @@
 
     const rootElement = document.getElementById('root');
 
-    class SayHello extends React.Component {
+    function Message({message}) {
 
-      static propTypes = {
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired
-    }
-
-      render() {
-
-        const {firstName, lastName} = this.props;
-
-        return (
-          <div>
-            Hello {firstName} {lastName}!
-          </div>
-        )
-      }
+      return (
+        <div>{
+          message 
+            ? React.createElement('div', null, message)
+            : React.createElement('div', null, 'No Message')}
+        </div>
+      )
     }
  
     ReactDOM.render(
-      <SayHello firstName={true} />,
+      <Message message='Hi There' />,
       rootElement
     );
 
