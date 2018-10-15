@@ -22,26 +22,29 @@
 
   <script type="text/babel">
 
+   function tick() {
     const rootElement = document.getElementById('root');
 
-    function Message({message}) {
+    const time = new Date().toLocaleTimeString();
 
-      return (
-        <div>{
-          message 
-            ? React.createElement('div', null, message)
-            : React.createElement('div', null, 'No Message')}
-        </div>
-      )
-    }
- 
+    const element = (
+      <div>
+        It is 
+        <input value={time} />
+        <input value={time} />
+      </div>
+    )
+
     ReactDOM.render(
-      <Message message='Hi There' />,
+      element,
       rootElement
     );
 
-  </script>
+   }
 
+  setInterval(tick, 1000);
+
+  </script>
 
 </body>
 
