@@ -22,29 +22,16 @@
 
     const rootElement = document.getElementById('root');
 
-    const content = 'Hello World';
-    const myClassName = 'container';
-
-    const props = {
-      className: 'container',
-      children: 'Hello World'
-    }
-
-    // const element = <div className="container">{content}</div>;
-
-    // Private Scope for JavaScript ~ mutating above line of code
-
-    // const element = <div className={myClassName}>{(() => content )()}</div>;
-
-    // Another thing we can do with JSX
+    const message = (props) => <div>{props.msg}</div>;
 
     const element = (
+      <div className="container">
 
-      // <div {...props} />
-
-      // Children over-riding
-
-      <div {...props}>Hi there</div>
+        {React.createElement(message, {msg: 'Hello World'})}
+        
+        {message({msg: 'Hi there'})}
+    
+      </div>
     )
 
     console.log(element);
