@@ -15,18 +15,37 @@
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
-  <script type="text/javascript">
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+
+  <script type="text/babel">
 
     const rootElement = document.getElementById('root');
 
-    const element = React.createElement(
-      'div',
-      {
-        className: 'container',
-        children: ['Hello World', 'hi there!']
-      },
-      'children override!'
-    );
+    const content = 'Hello World';
+    const myClassName = 'container';
+
+    const props = {
+      className: 'container',
+      children: 'Hello World'
+    }
+
+    // const element = <div className="container">{content}</div>;
+
+    // Private Scope for JavaScript ~ mutating above line of code
+
+    // const element = <div className={myClassName}>{(() => content )()}</div>;
+
+    // Another thing we can do with JSX
+
+    const element = (
+
+      // <div {...props} />
+
+      // Children over-riding
+
+      <div {...props}>Hi there</div>
+    )
 
     console.log(element);
 
